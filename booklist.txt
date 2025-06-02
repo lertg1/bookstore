@@ -1,0 +1,27 @@
+[
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+ "price":48.90
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+ "price":99.90
+  },
+  {
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guid",
+   "price": 78.90
+  },
+  {
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+ "price":12.00
+  },
+  {
+    "title": "Stranger in a Strange Land",
+    "author": "Robert A Heinlein",
+ "price":21.90
+  }
+]
