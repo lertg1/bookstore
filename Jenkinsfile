@@ -10,7 +10,30 @@ pipeline {
     }
 
     stages {
-
+       stage('Checkout Code') {
+            steps {
+                checkout([  // Explicit checkout
+                    $class: 'GitSCM',
+                    branches: [[name: '*/master']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/lertg1/bookstore.git']]
+                ])
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Verify files were checked out
+                    sh 'ls -la'
+                    
+                    // If package.json is in a subfolder (e.g. 'frontend')
+                    dir('frontend') {
+                        sh 'npm install'
+                    }
+                }
+            }
+        }
                 stage('Checkout') {
             steps {
                 checkout scm  // Pulls code from Git
