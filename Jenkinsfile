@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define any global environment variables here
-        GIT_REPO = 'https://github.com/your-org/your-bookstore-repo.git'
+        GIT_REPO = 'https://github.com/lertg1/bookstore.git'
     }
 
     stages {
