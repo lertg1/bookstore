@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    tools {
-        maven 'M3' // we will configure this in Jenkins
+        tools {
+        nodejs 'NodeJS'  // Must match the name in Global Tool Configuration
     }
 
     environment {
