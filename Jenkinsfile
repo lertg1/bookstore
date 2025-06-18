@@ -34,11 +34,7 @@ pipeline {
                 checkout scm  // Pulls code from Git
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'  // Now package.json should exist
-            }
-        }
+
         stage('Lint') {
             steps {
                 script {
