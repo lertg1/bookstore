@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository from GitHub
-                git branch: 'main', url: 'https://github.com/lertg1/bookstore.git'
+                git branch: 'master', url: 'https://github.com/lertg1/bookstore.git'
             }
         }
 
