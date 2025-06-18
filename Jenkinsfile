@@ -10,17 +10,15 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+
+                stage('Checkout') {
             steps {
-                git url: "${GIT_REPO}", branch: 'master'
+                checkout scm  // Pulls code from Git
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
-                dir('api') {
-                    sh 'npm install'
-                }
+                sh 'npm install'  // Now package.json should exist
             }
         }
         stage('Lint') {
