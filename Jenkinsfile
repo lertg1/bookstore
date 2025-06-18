@@ -19,6 +19,7 @@ pipeline {
             steps {
                 // Build the application using Maven
                 sh 'mvn clean package'
+                sh 'mvn clean package -X'
             }
         }
 
