@@ -1,28 +1,42 @@
 pipeline {
     agent any
+        tools {
+        nodejs 'NodeJS'  // Must match the name in Global Tool Configuration
+    }
 
     environment {
+        // Define any global environment variables here
         GIT_REPO = 'https://github.com/your-org/your-bookstore-repo.git'
     }
 
     stages {
-        stage('Checkout') {
+       stage('Checkout Code') {
             steps {
-                git url: "${GIT_REPO}", branch: 'main'
+                checkout([  // Explicit checkout
+                    $class: 'GitSCM',
+                    branches: [[name: '*/master']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/lertg1/bookstore.git']]
+                ])
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+                dir('api') {
+                    sh 'npm install'
+                }
+            }
+        }
+                stage('Checkout') {
+            steps {
+                checkout scm  // Pulls code from Git
             }
         }
         stage('Install Dependencies') {
             steps {
-                script {
-                    if (fileExists('package.json')) {
-                        sh 'npm install'
-                    }
-                    if (fileExists('api/package.json')) {
-                        dir('api') {
-                            sh 'npm install'
-                        }
-                    }
-                }
+                sh 'npm install'  // Now package.json should exist
             }
         }
         stage('Lint') {
